@@ -81,6 +81,7 @@ void testApp_D::setup(){
   // ウィンドウサイズに依存する設定の初期化
   windowResized(ofGetWidth(), ofGetHeight());
   
+  fbo.setUseTexture(false);
   fbo.allocate(winWidth, winHeight);
   fbo.begin();
   {

@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3636109C17CB6B2700271C77 /* ofxVideoRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3636109A17CB6B2700271C77 /* ofxVideoRecorder.cpp */; };
-		36B9A0F817C90F3600AF853F /* GUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B9A0EC17C90F3600AF853F /* GUI.cpp */; };
-		36B9A0F917C90F3600AF853F /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B9A0EE17C90F3600AF853F /* Util.cpp */; };
-		36B9A0FA17C90F3600AF853F /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B9A0F017C90F3600AF853F /* Background.cpp */; };
-		36B9A0FB17C90F3600AF853F /* testApp_D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B9A0F217C90F3600AF853F /* testApp_D.cpp */; };
-		36B9A0FC17C90F3600AF853F /* Fish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B9A0F417C90F3600AF853F /* Fish.cpp */; };
-		36B9A0FD17C90F3600AF853F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B9A0F617C90F3600AF853F /* main.cpp */; };
-		36B9A10717C90F5000AF853F /* Boid3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 36B9A10017C90F5000AF853F /* Boid3d.cpp */; };
+		362DA79F17CBE0DA002BD7DA /* GUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362DA79317CBE0DA002BD7DA /* GUI.cpp */; };
+		362DA7A017CBE0DA002BD7DA /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362DA79517CBE0DA002BD7DA /* Util.cpp */; };
+		362DA7A117CBE0DA002BD7DA /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362DA79717CBE0DA002BD7DA /* Background.cpp */; };
+		362DA7A217CBE0DA002BD7DA /* testApp_D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362DA79917CBE0DA002BD7DA /* testApp_D.cpp */; };
+		362DA7A317CBE0DA002BD7DA /* Fish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362DA79B17CBE0DA002BD7DA /* Fish.cpp */; };
+		362DA7A417CBE0DA002BD7DA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362DA79D17CBE0DA002BD7DA /* main.cpp */; };
+		362DA7AD17CBE0EF002BD7DA /* Boid3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362DA7A717CBE0EF002BD7DA /* Boid3d.cpp */; };
+		362DA7AE17CBE0EF002BD7DA /* ofxVideoRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 362DA7AB17CBE0EF002BD7DA /* ofxVideoRecorder.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -66,24 +66,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3636109A17CB6B2700271C77 /* ofxVideoRecorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVideoRecorder.cpp; sourceTree = "<group>"; };
-		3636109B17CB6B2700271C77 /* ofxVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVideoRecorder.h; sourceTree = "<group>"; };
-		36B9A0EC17C90F3600AF853F /* GUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUI.cpp; sourceTree = "<group>"; };
-		36B9A0ED17C90F3600AF853F /* GUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUI.h; sourceTree = "<group>"; };
-		36B9A0EE17C90F3600AF853F /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
-		36B9A0EF17C90F3600AF853F /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
-		36B9A0F017C90F3600AF853F /* Background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
-		36B9A0F117C90F3600AF853F /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
-		36B9A0F217C90F3600AF853F /* testApp_D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp_D.cpp; sourceTree = "<group>"; };
-		36B9A0F317C90F3600AF853F /* testApp_D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp_D.h; sourceTree = "<group>"; };
-		36B9A0F417C90F3600AF853F /* Fish.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fish.cpp; sourceTree = "<group>"; };
-		36B9A0F517C90F3600AF853F /* Fish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fish.h; sourceTree = "<group>"; };
-		36B9A0F617C90F3600AF853F /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		36B9A0F717C90F3600AF853F /* ofxSoundInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSoundInput.h; sourceTree = "<group>"; };
-		36B9A0FF17C90F5000AF853F /* AttractionPoint3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttractionPoint3d.h; sourceTree = "<group>"; };
-		36B9A10017C90F5000AF853F /* Boid3d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boid3d.cpp; sourceTree = "<group>"; };
-		36B9A10117C90F5000AF853F /* Boid3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boid3d.h; sourceTree = "<group>"; };
-		36B9A10217C90F5000AF853F /* Flock3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flock3d.h; sourceTree = "<group>"; };
+		362DA79317CBE0DA002BD7DA /* GUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GUI.cpp; sourceTree = "<group>"; };
+		362DA79417CBE0DA002BD7DA /* GUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUI.h; sourceTree = "<group>"; };
+		362DA79517CBE0DA002BD7DA /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
+		362DA79617CBE0DA002BD7DA /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		362DA79717CBE0DA002BD7DA /* Background.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Background.cpp; sourceTree = "<group>"; };
+		362DA79817CBE0DA002BD7DA /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Background.h; sourceTree = "<group>"; };
+		362DA79917CBE0DA002BD7DA /* testApp_D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp_D.cpp; sourceTree = "<group>"; };
+		362DA79A17CBE0DA002BD7DA /* testApp_D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp_D.h; sourceTree = "<group>"; };
+		362DA79B17CBE0DA002BD7DA /* Fish.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fish.cpp; sourceTree = "<group>"; };
+		362DA79C17CBE0DA002BD7DA /* Fish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fish.h; sourceTree = "<group>"; };
+		362DA79D17CBE0DA002BD7DA /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		362DA79E17CBE0DA002BD7DA /* ofxSoundInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSoundInput.h; sourceTree = "<group>"; };
+		362DA7A617CBE0EF002BD7DA /* AttractionPoint3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttractionPoint3d.h; sourceTree = "<group>"; };
+		362DA7A717CBE0EF002BD7DA /* Boid3d.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boid3d.cpp; sourceTree = "<group>"; };
+		362DA7A817CBE0EF002BD7DA /* Boid3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boid3d.h; sourceTree = "<group>"; };
+		362DA7A917CBE0EF002BD7DA /* Flock3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flock3d.h; sourceTree = "<group>"; };
+		362DA7AB17CBE0EF002BD7DA /* ofxVideoRecorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVideoRecorder.cpp; sourceTree = "<group>"; };
+		362DA7AC17CBE0EF002BD7DA /* ofxVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVideoRecorder.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -135,31 +135,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3636109917CB6B2700271C77 /* ofxVideoRecorder */ = {
+		362DA7A517CBE0EF002BD7DA /* ofxBoids */ = {
 			isa = PBXGroup;
 			children = (
-				3636109A17CB6B2700271C77 /* ofxVideoRecorder.cpp */,
-				3636109B17CB6B2700271C77 /* ofxVideoRecorder.h */,
-			);
-			path = ofxVideoRecorder;
-			sourceTree = "<group>";
-		};
-		36B9A0FE17C90F5000AF853F /* ofxBoids */ = {
-			isa = PBXGroup;
-			children = (
-				36B9A0FF17C90F5000AF853F /* AttractionPoint3d.h */,
-				36B9A10017C90F5000AF853F /* Boid3d.cpp */,
-				36B9A10117C90F5000AF853F /* Boid3d.h */,
-				36B9A10217C90F5000AF853F /* Flock3d.h */,
+				362DA7A617CBE0EF002BD7DA /* AttractionPoint3d.h */,
+				362DA7A717CBE0EF002BD7DA /* Boid3d.cpp */,
+				362DA7A817CBE0EF002BD7DA /* Boid3d.h */,
+				362DA7A917CBE0EF002BD7DA /* Flock3d.h */,
 			);
 			path = ofxBoids;
+			sourceTree = "<group>";
+		};
+		362DA7AA17CBE0EF002BD7DA /* ofxVideoRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				362DA7AB17CBE0EF002BD7DA /* ofxVideoRecorder.cpp */,
+				362DA7AC17CBE0EF002BD7DA /* ofxVideoRecorder.h */,
+			);
+			path = ofxVideoRecorder;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				3636109917CB6B2700271C77 /* ofxVideoRecorder */,
-				36B9A0FE17C90F5000AF853F /* ofxBoids */,
+				362DA7A517CBE0EF002BD7DA /* ofxBoids */,
+				362DA7AA17CBE0EF002BD7DA /* ofxVideoRecorder */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -229,18 +229,18 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				36B9A0F617C90F3600AF853F /* main.cpp */,
-				36B9A0F217C90F3600AF853F /* testApp_D.cpp */,
-				36B9A0F317C90F3600AF853F /* testApp_D.h */,
-				36B9A0EE17C90F3600AF853F /* Util.cpp */,
-				36B9A0EF17C90F3600AF853F /* Util.h */,
-				36B9A0F417C90F3600AF853F /* Fish.cpp */,
-				36B9A0F517C90F3600AF853F /* Fish.h */,
-				36B9A0F017C90F3600AF853F /* Background.cpp */,
-				36B9A0F117C90F3600AF853F /* Background.h */,
-				36B9A0EC17C90F3600AF853F /* GUI.cpp */,
-				36B9A0ED17C90F3600AF853F /* GUI.h */,
-				36B9A0F717C90F3600AF853F /* ofxSoundInput.h */,
+				362DA79317CBE0DA002BD7DA /* GUI.cpp */,
+				362DA79417CBE0DA002BD7DA /* GUI.h */,
+				362DA79517CBE0DA002BD7DA /* Util.cpp */,
+				362DA79617CBE0DA002BD7DA /* Util.h */,
+				362DA79717CBE0DA002BD7DA /* Background.cpp */,
+				362DA79817CBE0DA002BD7DA /* Background.h */,
+				362DA79917CBE0DA002BD7DA /* testApp_D.cpp */,
+				362DA79A17CBE0DA002BD7DA /* testApp_D.h */,
+				362DA79B17CBE0DA002BD7DA /* Fish.cpp */,
+				362DA79C17CBE0DA002BD7DA /* Fish.h */,
+				362DA79D17CBE0DA002BD7DA /* main.cpp */,
+				362DA79E17CBE0DA002BD7DA /* ofxSoundInput.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -332,7 +332,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";";
+			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -341,14 +341,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36B9A0F817C90F3600AF853F /* GUI.cpp in Sources */,
-				36B9A0F917C90F3600AF853F /* Util.cpp in Sources */,
-				36B9A0FA17C90F3600AF853F /* Background.cpp in Sources */,
-				36B9A0FB17C90F3600AF853F /* testApp_D.cpp in Sources */,
-				36B9A0FC17C90F3600AF853F /* Fish.cpp in Sources */,
-				36B9A0FD17C90F3600AF853F /* main.cpp in Sources */,
-				36B9A10717C90F5000AF853F /* Boid3d.cpp in Sources */,
-				3636109C17CB6B2700271C77 /* ofxVideoRecorder.cpp in Sources */,
+				362DA79F17CBE0DA002BD7DA /* GUI.cpp in Sources */,
+				362DA7A017CBE0DA002BD7DA /* Util.cpp in Sources */,
+				362DA7A117CBE0DA002BD7DA /* Background.cpp in Sources */,
+				362DA7A217CBE0DA002BD7DA /* testApp_D.cpp in Sources */,
+				362DA7A317CBE0DA002BD7DA /* Fish.cpp in Sources */,
+				362DA7A417CBE0DA002BD7DA /* main.cpp in Sources */,
+				362DA7AD17CBE0EF002BD7DA /* Boid3d.cpp in Sources */,
+				362DA7AE17CBE0EF002BD7DA /* ofxVideoRecorder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +389,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -420,7 +420,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};
@@ -437,8 +437,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				ICON = "$(ICON_NAME_DEBUG)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -505,6 +505,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
 			};
@@ -522,8 +523,8 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				ICON = "$(ICON_NAME_RELEASE)";
+				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -590,6 +591,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
