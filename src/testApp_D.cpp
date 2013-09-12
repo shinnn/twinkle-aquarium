@@ -1,109 +1,100 @@
-#include "testApp_D.h"
+﻿#include "testApp_D.h"
 
-const int testApp_D::FISH_NUM[] = {600, 80, 5};
+int testApp_D::FISH_NUM[] = {600, 80, 5, 500};
+const int testApp_D::FPS = 60;
 const float testApp_D::MAX_FORCE = 20000.0f;
-const float testApp_D::MAX_ALIGN = 12.0f;
-const float testApp_D::MIN_SPEED = 4.0 * 60.0 / FPS;
 
 //--------------------------------------------------------------
 void testApp_D::setup(){
   
+  soundInput.setup();
+  
+  settings.loadFile("settings.xml");
+  
+  FISH_NUM[0] = settings.getValue("Fish:num0", 600);
+  FISH_NUM[1] = settings.getValue("Fish:num1", 80);
+  FISH_NUM[2] = settings.getValue("Fish:num2", 5);
+  FISH_NUM[3] = settings.getValue("Fish:num3", 500);
+
+  Shoal::defaultMinBoundZ = settings.getValue("Fish:defaultMinBoundZ", 0);
+  Shoal::defaultMaxBoundZ = settings.getValue("Fish:defaultMaxBoundZ", 600);
+
   ofSetFrameRate(FPS);
-	ofBackground(255);
+  ofBackground(0, 0, 0);
   ofSetCircleResolution(60);
   ofSetVerticalSync(true);
+  ofEnableSmoothing();
   ofEnableAlphaBlending();
   
   paused = false;
+  isFullscreen = false;
   devMode = false;
   imgMode = true;
+  showTrack = false;
   cursorHidingFrameCount = 0;
   ofHideCursor();
+  
+  Shoal::defaultSpeed *=  60.0 / FPS;
 
-  // ウィンドウサイズが必要になるたびに ofGetWidth/Height を使わない
-  // ここで一回だけ取得しておく
+  ofSetBackgroundAuto(!showTrack);
+
   winWidth = ofGetWidth();
   winHeight = ofGetHeight();
   
+  bgColorR = bgColorG = bgColorB = 0;
+  
   force = 10000.0f;
-  stream = 0;
   
-  for(int i=0; i < (sizeof(FISH_NUM) / sizeof(FISH_NUM[0])); i++){
-    vector<Fish> _vFish;
-    fish.push_back(_vFish);
-  }
+  shoals.push_back(Shoal(ofImage("images/fish0.png")));
+  shoals.push_back(Shoal(ofImage("images/fish1.png")));
+  shoals.push_back(Shoal(ofImage("images/jellyfish.png")));
+  shoals.push_back(Float(ofImage("images/dust.png")));
   
-  fishImages = new ofImage[fish.size()];
-  
-  fishImages[0].loadImage("groupD/fish0.png");
-  fishImages[1].loadImage("groupD/fish1.png");
-  fishImages[2].loadImage("groupD/fish2.png");
-  
-  for(int i=0; i < fish.size(); i++){
-    for(int j=0; j < FISH_NUM[i]; j++){
-      Fish _fish(& fishImages[i]);
-      fish[i].push_back(_fish);
-    }
-  }
-
-  cout << sizeof(FISH_NUM) / sizeof(FISH_NUM[0]) << endl;
-  cout << fish.size() << endl;
-  
-  for(int i=0; i < fish.size(); i++){
-    flocks[i].setup(FISH_NUM[i], winWidth*0.5, winHeight*0.5, 0, 0);
-    flocks[i].setBoundmode(0);
-    flocks[i].setBounds(0, 0, 0, winWidth, winHeight, 0);
-    
-    flocks[i].setMaxSpeed(MIN_SPEED);
-    flocks[i].setMaxForce(MAX_FORCE * 10.0f);
-    flocks[i].setMaxTurn(0.0f);
-    
-    flocks[i].setAlign(MAX_ALIGN);
-    flocks[i].setDistAlign(90.0f);
-    
-    flocks[i].setCohesion(20.0f);
-    flocks[i].setDistCohesion(5.0f);
-    
-    flocks[i].setSeparate(100.0f);
-    flocks[i].setDistSeparation(80.0f);
-    
-    flocks[i].setAttraction(-200.0);
-    flocks[i].setAttractionDev(-1.0);
-    
-    // AttractionPoint の id[0-3] は毎フレーム、
-    // id[4-7]はウィンドウサイズが変わるたびに変更されるので、
-    // ここでは引数は気にせず、追加だけしておく
-    for (int j=0; j < 8; j++){
-      flocks[i].addAttractionPoint(0, 0, 0, 0, 0);
-    }
+  // Initialize shoals
+  for(int i=0; i < shoals.size(); i++){
+    shoals[i].setupBoids(FISH_NUM[i], winWidth, winHeight);
   }
 
   // ウィンドウサイズに依存する設定の初期化
   windowResized(ofGetWidth(), ofGetHeight());
   
-  fbo.setUseTexture(false);
   fbo.allocate(winWidth, winHeight);
+
   fbo.begin();
   {
     ofClear(255);
-    Background::draw();
+    Background::draw(winWidth, winHeight);
   }
   fbo.end();
   
   volume = 0;
+  maxVolume = 1.0;
 
   for(int i=0; i < FPS * 10; i++){
     formarVolumes.push_back(0);
   }
-
-  for(int i=0; i < FPS * 0.2; i++){
+  
+  for(int i=0; i < FPS * 0.05; i++){
     currentVolumes.push_back(0);
   }
   
   volumeBase = 0;
   
-  soundInput.setup();
+  maxVolume = settings.getValue("maxVolume", 1.0);
+  bgColorR = settings.getValue("bgColorR", 0);
+  bgColorG = settings.getValue("bgColorG", 0);
+  bgColorB = settings.getValue("bgColorB", 0);
   
+  Shoal::defaultScale = settings.getValue("Fish:defaultScale", 1.0f);
+  Shoal::defaultAlign = settings.getValue("Fish:defaultAlign", 12.0f);
+  Shoal::defaultEscapeSpeed = settings.getValue("Fish:defaultEscapeSpeed", 85.0f);
+  
+  Shoal::additional_vx = settings.getValue("Fish:additional_vx", 0.04250f);
+  Shoal::additional_vy = settings.getValue("Fish:additional_vy", 0.04250f);
+  Shoal::additional_vz = settings.getValue("Fish:additional_vz", 0.850f);
+
+  attractionPointScale = settings.getValue("attractionPointScale", 1.0f);
+
   for(int i=0; i < 250; i++){
     testApp_D::update();
   }
@@ -114,21 +105,12 @@ void testApp_D::windowResized(int w, int h){
   winWidth = w;
   winHeight = h;
   
-  for(int i=0; i < fish.size(); i++){
-    flocks[i].setBounds(0, 0, 0, w, h, 600);
-    
-    /*
-    // 端に追いやられた魚を中央へ戻すための AttractionPoint
-    flocks[i].changeAttractionPoint(4, -200, 0, 300, 0.750f, h*0.5);
-    flocks[i].changeAttractionPoint(5, -200, h, 300, 0.750f, h*0.5);
-    flocks[i].changeAttractionPoint(6, w+200, 0, 300, 0.750f, h*0.5);
-    flocks[i].changeAttractionPoint(7, w+200, h, 300, 0.750f, h*0.5);
-     */
-  }
+  setAllBounds();
 }
 
 //--------------------------------------------------------------
 void testApp_D::update(){
+  
   // 5秒間経過した場合、マウスカーソルを非表示にする
   if(cursorHidingFrameCount == 5 * FPS){
     ofHideCursor();
@@ -137,91 +119,71 @@ void testApp_D::update(){
     cursorHidingFrameCount++;
   }
   
-  // 音量の取得
-  // soundInput.getVolumeLog() は 0.0 〜 1.0 の値を返す
+  // Get audio volume
+  // soundInput.getVolumeLog() returns 0.0 〜 1.0
   volume = MAX(soundInput.getVolumeLog() + volumeBase, 0);
+  volume = ofMap(volume, 0, maxVolume, 0, 1, true);
 
-  float formerVolumeAverage = util.updateListAverage(& formarVolumes, volume);
-  float currentVolumeAverage = util.updateListAverage(& currentVolumes, volume);
+  float formerVolumeAverage = util.updateVectorAverage(& formarVolumes, volume);
+  float currentVolumeAverage = util.updateVectorAverage(& currentVolumes, volume);
   
-  for(int i=0; i < fish.size(); i++){
-    // 散開するときだけ、魚の速度を上げる
+  for(int i=0; i < shoals.size(); i++){
+    // acceleration
     if(currentVolumeAverage > formerVolumeAverage || currentVolumeAverage > 0.10f){
       force = MAX_FORCE * currentVolumeAverage;
-      flocks[i].setMaxSpeed(MIN_SPEED + 30.0f * (force / MAX_FORCE));
+      shoals[i].flock.setMaxSpeed(shoals[i].speed + Shoal::defaultEscapeSpeed * (force / MAX_FORCE));
     }else{
-      if(force < 0.000010f){
+      if(force < 0.00010f){
         force = 0;
       }else{
-        force = force * 0.40f;
+        force = force * 0.950f;
       }
-      flocks[i].setMaxSpeed(MAX(flocks[i].getMaxSpeed() * 0.950, MIN_SPEED));
+      // deceleration
+      shoals[i].flock.setMaxSpeed(MAX(shoals[i].flock.getMaxSpeed() * 0.950f, shoals[i].speed));
     }
     
     // 散開するときだけ、魚の整列を乱す
-    flocks[i].setAlign(MAX_ALIGN / (1.0 + volume));
-    flocks[i].setDistAlign(90.0f / (1.0 + volume));
-    
-    // 音量に応じて中心から斥力を発生させる、魚を散開させるための AttractonPoint
-    flocks[i].changeAttractionPoint
+    shoals[i].flock.setAlign(shoals[i].align / (1.0 + volume));
+    shoals[i].flock.setDistAlign(90.0f / (1.0 + volume));
+		    
+    // AttractonPoint
+    shoals[i].flock.changeAttractionPoint
     (
      0,
      ofRandom(winWidth * 0.48, winWidth * 0.52),
      ofRandom(winHeight * 0.15, winHeight * 0.85),
-     ofRandom(flocks[i].maxZ + 50, flocks[i].maxZ + 150),
-     force,
-     600.0f
+     ofRandom(shoals[i].flock.maxZ + 50, shoals[i].flock.maxZ + 150),
+     force * 1.3,
+     winHeight * attractionPointScale
      );
-    flocks[i].changeAttractionPoint
+    shoals[i].flock.changeAttractionPoint
     (
      1,
      ofRandom(winWidth*0.48, winWidth*0.52),
      ofRandom(winHeight*0.15, winHeight*0.85),
      ofRandom(400, 650),
-     force,
-     500.0f
+     force * 1.3,
+     winHeight * attractionPointScale
     );
     
-    // 魚を手前に戻す力
+    // Back to front
     for (int j=2; j <= 3; j++){
-      flocks[i].changeAttractionPoint
+      shoals[i].flock.changeAttractionPoint
       (
        j,
        ofRandom(0, winWidth),
        ofRandom(0, winHeight),
-       ofRandom(flocks[i].minZ, flocks[i].minZ - 120),
+       ofRandom(shoals[i].flock.minZ, shoals[i].flock.minZ - 120),
        0 * 20.0f * (force / MAX_FORCE),
        winHeight * 0.5
        );
     }
     
-    // ポーズ中は、魚の位置を更新しない
     if(paused){
       return;
     }
     
-    flocks[i].update();
-    
-    // 魚らしく見えるように補正
-    for (int j=0; j < FISH_NUM[i]; j++) {
-      // Z軸の速度に斥力をすぐに反映させ、魚が突発的に逃げているように見せる
-      
-      //flocks[i].get(j)->vz +=
-      //ofMap(flocks[i].get(j)->z, flocks[i].minZ + 0.001, flocks[i].maxZ, 0.450f, 1.850f, true) * (force / MAX_FORCE);
-      
-      if(flocks[i].get(j)->vz > 0){
-        flocks[i].get(j)->vz += 0.850f * (force / MAX_FORCE);
-        //flocks[i].get(j)->z += 0.850f * (force / MAX_FORCE);
-      }else{
-        flocks[i].get(j)->vz += 0.450f * (force / MAX_FORCE);
-        //flocks[i].get(j)->z -= 0.850f * (force / MAX_FORCE);
-      }
-      
-      // 魚の身体が縦向きになると違和感を与えるので、
-      // できるだけ横向きになるようにY方向を調整
-      flocks[i].get(j)->vy = MIN(flocks[i].get(j)->vy, 0.620f);
-      flocks[i].get(j)->vy = MAX(flocks[i].get(j)->vy, -0.620f);
-    }
+    shoals[i].update(force);
   }
   
   util.updateScreenCaptureParams();
@@ -229,17 +191,33 @@ void testApp_D::update(){
 
 //--------------------------------------------------------------
 void testApp_D::draw(){
-  ofBackground(0, 0, 0, 255);
-  //ofBackground(255, 255, 255, 55);
-
+  
   util.setTitle(devMode);
   
+  // 180 rotate
+  // ofTranslate(winWidth/2, winHeight/2, 0);
+  // glRotatef(180.f, 0.f, 1.f, 0.f);
+  // glRotatef(180.f, 0.f, 0.f, 1.f);
+  // ofTranslate(-winWidth/2, -winHeight/2, 0);
+
+  if(showTrack){
+    ofSetColor(0, 0, 0, 98);
+    ofRect(0, 0, winWidth, winHeight);
+  }
+
+  // Draw Background
+  if(Background::isMonochrome){
+    ofBackground(bgColorR, bgColorG, bgColorB, 255);
+  }else{
+    Background::draw(winWidth, winHeight);
+  }
+
+  ofEnableBlendMode(OF_BLENDMODE_ADD);
+
   ofSetColor(255, 255, 255);
-  // 背景の描画
-  //fbo.draw(0, 0, winWidth, winHeight);
 
   #ifdef DEBUG
-    // AttractionPoint の描画
+    // make AttractionPoint visible
     if(flock.hasAttractionPoints()){
       ofSetColor(0, 255, 255, 255 * volume);
       for(int i=0; i < flock.attractionPoints.size(); i++){
@@ -248,33 +226,27 @@ void testApp_D::draw(){
     }
   #endif
   
-  //ofEnableBlendMode(OF_BLENDMODE_A);
-  
-  for(int i=0; i < fish.size(); i++){
+  for(int i=0; i < shoals.size(); i++){
     for (int j=0; j < FISH_NUM[i]; j++) {
-      Boid3d * b = flocks[i].get(j);
+      Boid3d * b = shoals[i].flock.get(j);
       
       glPushMatrix();
-      {
-        glTranslatef(b->x, b->y, b->z);
-        
-        //glRotatef(atan(b->vz) * -RAD_TO_DEG, 0, 1, 0);
-        //glRotatef(atan2(b->vy, b->vx) * RAD_TO_DEG, 0, 0, 1);
-        
-        glRotatef( atan2( b->vz, b->vx )* -RAD_TO_DEG, 0, 1, 0 );
-        glRotatef( atan2( b->vy, sqrt( b->vx * b->vx + b->vz * b->vz ) )*RAD_TO_DEG, 0, 0, 1 );
-        
-        // 魚のグラフィックの描画
-        if(imgMode){
-          fish[i][j].drawImage(b);
-        }else{
-          fish[i][j].draw(b);
-        }
+      glTranslatef(b->x, b->y, b->z);
+
+      // turningZ が true のとき、常に正面を向いた状態で移動する
+      if(shoals[i].turningZ){
+        glRotatef(atan2( b->vz, b->vx ) * -RAD_TO_DEG, 0, 1, 0);
       }
-      glPopMatrix();
+      glRotatef(atan2( b->vy, sqrt( b->vx * b->vx + b->vz * b->vz ) )*RAD_TO_DEG, 0, 0, 1);
+
+      // draw fish
+      shoals[i].drawOnBoid(b);
       
+      glPopMatrix();
+
+
       if(devMode){
-        ofSetColor(0);
+        ofSetColor(255, 0, 0, 255);
         ofCircle(b->x, b->y, b->z, 1);
         
         /*
@@ -292,7 +264,7 @@ void testApp_D::draw(){
   
   if(devMode){
     ofSetColor(255, 255, 255, 200);
-    ofRect(0, 0, 200, winHeight);
+    ofRect(0, 0, 400, winHeight);
     ofSetColor(0);
 
     ofDrawBitmapString("VOLUME", 20, 20);
@@ -302,7 +274,7 @@ void testApp_D::draw(){
     ofDrawBitmapString(ofToString(force), 20, 100);
 
     ofDrawBitmapString("MAX SPEED", 20, 140);
-    ofDrawBitmapString(ofToString(flocks[0].getMaxSpeed()), 20, 160);
+    ofDrawBitmapString(ofToString(shoals[0].flock.getMaxSpeed()), 20, 160);
   }
 }
 
@@ -318,12 +290,18 @@ void testApp_D::keyPressed(int key){
 
     // 'f'キー でフルスクリーンに切り替え
     case 'f':
-      ofToggleFullscreen();
+      isFullscreen = !isFullscreen;
+      ofSetFullscreen(isFullscreen);
       break;
       
     // 's'キー でスクリーンショット（静止画）の撮影
     case 's':
       util.saveScreenShot();
+      break;
+    
+    // 'r'キーで録画・書き出し
+    case 'r':
+      util.toggleScreenRecording(winWidth, winHeight, FPS);
       break;
       
     // 入力音量を補正する
@@ -333,16 +311,26 @@ void testApp_D::keyPressed(int key){
     case 46: // '.'キー
       volumeBase += 0.050f;
       break;
-    
-    // 'r'キーで録画・書き出し
-    case 'r':
-      util.toggleScreenRecording(winWidth, winHeight, FPS);
       
+    //TODO: 水槽のサイズを変更する
+    case 91: // '['キー
       break;
-    
+    case 93: // ']'キー
+      break;
+      
     // 'm'キーで画像モードの切り替え
     case 'm':
       imgMode = !imgMode;
+      break;
+      
+    // 'h'キーで魚を非表示
+    case 'h':
+      Shoal::isHidden = !Shoal::isHidden;
+      break;
+      
+    // 'b'キーで背景の切り替え
+    case 'b':
+      Background::isMonochrome = !Background::isMonochrome;
       break;
       
     // スペースキーで一時停止
@@ -373,5 +361,20 @@ void testApp_D::mouseReleased(int x, int y, int button){
 
 //--------------------------------------------------------------
 void testApp_D::exit() {
-  util.stopRecordScreen();
 }
+
+//------------------- Partial Functions ------------------------
+void testApp_D::setAllBounds(){
+  for(int i=0; i < shoals.size(); i++){
+    shoals[i].flock.setBounds
+    (
+     shoals[i].flock.minX,
+     shoals[i].flock.minY,
+     shoals[i].minBoundZ,
+     winWidth,
+     winHeight,
+     shoals[i].maxBoundZ
+    );
+  }
+}
+

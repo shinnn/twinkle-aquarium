@@ -11,6 +11,7 @@ public:
   void setTitle(bool devMode);
   
   float updateListAverage(list<float> * l, float v);
+  float updateVectorAverage(vector<float> * l, float v);
   
   void makeUnmadeDir(string dirpath);
   
@@ -18,10 +19,10 @@ public:
   void saveScreenShot();
   void toggleScreenRecording(int w, int h, int fps);
   void stopRecordScreen();
-
+  
   ofImage screenImage;
   ofRectangle windowRect;
   ofxVideoRecorder vidRecorder;
   bool isRecording;
-
+  
 };

@@ -1,40 +1,39 @@
 #include "Background.h"
 
-void Background::draw(){
-  // 水中背景の描画
-  
-  // For文用
-  int i;
+bool Background::isMonochrome = false;
 
-  ofSetLineWidth(2.0);
-  
-  // HSBモードのColor用
-  int hue = 140;
-  int sat = 200;
-  int bright = 250;
-  int alpha = 0;
-  
-  // RGBモードのColor用
-  int R = 30;
-  int G = 60;
-  int B = 234;
-  int A = 0;
-  
-  // ofEnableBlendMode(OF_BLENDMODE_ADD);
-  
-  // HSBモードで色線を描く
-  for(i=0; i<ofGetHeight(); i++){
-    ofColor HSBc;
-    HSBc.setHsb(hue, sat+(i/5) , bright+(i/3) , alpha+(i/5) );
-    ofSetColor(HSBc);
-    ofLine(0, i, ofGetWidth(), i);
+int Background::x = 0;
+int Background::y = 20;
+
+void Background::draw(int w, int h){
+  if(ofRandomf() > 0.5){
+    x += 12;
+  }else{
+    x -= 12;
   }
   
-  // RGBモードで色線を描く
-  for(i=0; i < ofGetHeight(); i++){
-    ofColor RGBc;
-    RGBc.set(R+(i/5), G+(i/5), B-(i/5), A+(i/5));
-    ofSetColor(RGBc);
-    ofLine(0, i+100, ofGetWidth(), i+100);
+  if(x <= 0){
+    x = 0;
   }
+  
+  glBegin(GL_POLYGON);
+  {
+    ofSetColor(ofColor::fromHsb(50, 120, 140));
+    // right-top (0, 0)
+    glVertex3f(0.0f, 0.0f, 0.0f);
+
+    ofSetColor(ofColor::fromHsb(150, 110, 255));
+    // left-top (w, 0)
+    glVertex3f(w, 0.0f, 0.0f);
+    
+    ofSetColor(ofColor::fromHsb(130, 220, 120));
+    // left-bottom (w, h)
+    glVertex3f(w, h, 0.0f);
+    
+    ofSetColor(ofColor::fromHsb(130, 220, 120));
+
+    // right-bottom (0, h)
+    glVertex3f(0.0f, h, 0.0f);
+  }
+  glEnd();
 }

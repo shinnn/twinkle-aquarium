@@ -42,6 +42,11 @@ public:
 		
 		return ret;
 	}
+  float getVolumeLog(bool b)
+	{
+    b = !b;
+		return getVolumeLog();
+	}
 	
 	void audioIn( float * input, int bufferSize, int nChannels )
 	{

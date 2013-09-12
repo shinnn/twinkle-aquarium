@@ -1,0 +1,26 @@
+<maxVolume>1.0</maxVolume>
+
+<bgColorR>40</bgColorR>
+<bgColorG>170</bgColorG>
+<bgColorB>240</bgColorB>
+
+<attractionPointScale>0.8f</attractionPointScale>
+
+<Fish>
+  <num0>600</num0>
+  <num1>80</num1>
+  <num2>5</num2>
+  <num3>500</num3>
+
+  <defaultScale>1.0f</defaultScale>
+  <defaultAlign>12.0f</defaultAlign>
+  <defaultEscapeSpeed>30.0f</defaultEscapeSpeed>
+  
+  <defaultMinBoundZ>0.0f</defaultMinBoundZ>
+  <defaultMaxBoundZ>600.0f</defaultMaxBoundZ>
+  
+  <additional_vx>0.04250f</additional_vx>
+  <additional_vy>0.04250f</additional_vy>
+  <additional_vz>1.250f</additional_vz>
+</Fish>
+

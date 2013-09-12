@@ -4,5 +4,10 @@
 
 class Background {
 public:
-  static void draw();
+  static void draw(int w, int h);
+  
+  static bool isMonochrome;
+
+  static int x;
+  static int y;
 };

@@ -16,7 +16,7 @@ void Util::setTitle(bool devMode){
     if(_h.length() < 2){
       _h = "0" + _h;
     }
-
+    
     string _s = ofToString((int) seconds % 60);
     if(_s.length() < 2){
       _s = "0" + _s;
@@ -37,6 +37,21 @@ float Util::updateListAverage(list<float> * l, float v){
   float _sum = 0.0f;
   list<float>::iterator itr = l->begin();
   list<float>::iterator itrEnd = l->end();
+  
+  for(; itr != itrEnd; itr++){
+		_sum += *itr;
+  }
+  
+  return 1.0 / l->size() * _sum;
+}
+
+float Util::updateVectorAverage(vector<float> * l, float v){
+  l->push_back(v);
+  l->erase(l->begin());
+  
+  float _sum = 0.0f;
+  vector<float>::iterator itr = l->begin();
+  vector<float>::iterator itrEnd = l->end();
   
   for(; itr != itrEnd; itr++){
 		_sum += *itr;
@@ -85,4 +100,3 @@ void Util::toggleScreenRecording(int w, int h, int fps){
 void Util::stopRecordScreen(){
   vidRecorder.close();
 }
-
