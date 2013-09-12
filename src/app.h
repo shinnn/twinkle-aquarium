@@ -7,7 +7,7 @@
 #include "ofxXmlSettings.h"
 #include "ofxSoundInput.h"
 
-class testApp_D : public ofBaseApp{
+class app : public ofBaseApp{
 public:
   static int FISH_NUM[];
   static const int FPS;

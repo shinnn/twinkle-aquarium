@@ -28,7 +28,7 @@
 		EA87A7F317E1F6B800A3A98B /* Background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA87A7E917E1F6B800A3A98B /* Background.cpp */; };
 		EA87A7F417E1F6B800A3A98B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA87A7EB17E1F6B800A3A98B /* main.cpp */; };
 		EA87A7F517E1F6B800A3A98B /* Shoal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA87A7ED17E1F6B800A3A98B /* Shoal.cpp */; };
-		EA87A7F617E1F6B800A3A98B /* testApp_D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA87A7EF17E1F6B800A3A98B /* testApp_D.cpp */; };
+		EA87A7F617E1F6B800A3A98B /* app.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA87A7EF17E1F6B800A3A98B /* app.cpp */; };
 		EA87A7F717E1F6B800A3A98B /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA87A7F117E1F6B800A3A98B /* Util.cpp */; };
 		EA87A80917E1F6F200A3A98B /* Boid3d.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA87A7FA17E1F6F200A3A98B /* Boid3d.cpp */; };
 		EA87A80A17E1F6F200A3A98B /* ofxVideoRecorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA87A7FE17E1F6F200A3A98B /* ofxVideoRecorder.cpp */; };
@@ -96,8 +96,8 @@
 		EA87A7EC17E1F6B800A3A98B /* ofxSoundInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSoundInput.h; sourceTree = "<group>"; };
 		EA87A7ED17E1F6B800A3A98B /* Shoal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shoal.cpp; sourceTree = "<group>"; };
 		EA87A7EE17E1F6B800A3A98B /* Shoal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shoal.h; sourceTree = "<group>"; };
-		EA87A7EF17E1F6B800A3A98B /* testApp_D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = testApp_D.cpp; sourceTree = "<group>"; tabWidth = 2; };
-		EA87A7F017E1F6B800A3A98B /* testApp_D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp_D.h; sourceTree = "<group>"; };
+		EA87A7EF17E1F6B800A3A98B /* app.cpp */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.cpp.cpp; path = app.cpp; sourceTree = "<group>"; tabWidth = 2; };
+		EA87A7F017E1F6B800A3A98B /* app.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = app.h; sourceTree = "<group>"; };
 		EA87A7F117E1F6B800A3A98B /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
 		EA87A7F217E1F6B800A3A98B /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		EA87A7F917E1F6F200A3A98B /* AttractionPoint3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttractionPoint3d.h; sourceTree = "<group>"; };
@@ -221,8 +221,8 @@
 				EA87A7EC17E1F6B800A3A98B /* ofxSoundInput.h */,
 				EA87A7ED17E1F6B800A3A98B /* Shoal.cpp */,
 				EA87A7EE17E1F6B800A3A98B /* Shoal.h */,
-				EA87A7EF17E1F6B800A3A98B /* testApp_D.cpp */,
-				EA87A7F017E1F6B800A3A98B /* testApp_D.h */,
+				EA87A7EF17E1F6B800A3A98B /* app.cpp */,
+				EA87A7F017E1F6B800A3A98B /* app.h */,
 				EA87A7F117E1F6B800A3A98B /* Util.cpp */,
 				EA87A7F217E1F6B800A3A98B /* Util.h */,
 			);
@@ -379,7 +379,7 @@
 				EA87A7F317E1F6B800A3A98B /* Background.cpp in Sources */,
 				EA87A7F417E1F6B800A3A98B /* main.cpp in Sources */,
 				EA87A7F517E1F6B800A3A98B /* Shoal.cpp in Sources */,
-				EA87A7F617E1F6B800A3A98B /* testApp_D.cpp in Sources */,
+				EA87A7F617E1F6B800A3A98B /* app.cpp in Sources */,
 				EA87A7F717E1F6B800A3A98B /* Util.cpp in Sources */,
 				EA87A80917E1F6F200A3A98B /* Boid3d.cpp in Sources */,
 				EA87A80A17E1F6F200A3A98B /* ofxVideoRecorder.cpp in Sources */,
