@@ -1,5 +1,9 @@
 開発
 site
+.sass-cache
+
+screen_shot
+screen_record
 
 # osx
 *.app
@@ -10,8 +14,21 @@ build
 xcuserdata
 DerivedData
 
-.sass-cache
-node_modules
+# Node
+# https://github.com/github/gitignore/blob/master/Node.gitignore
 
-screen_shot
-screen_record
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+npm-debug.log
+node_modules
