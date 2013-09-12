@@ -38,8 +38,6 @@ public:
   bool showTrack;
   unsigned int cursorHidingFrameCount;
   
-  bool x5mode;
-  
   bool coordinatesVisible;
   
   // basic background color
