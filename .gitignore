@@ -1,3 +1,6 @@
+開発
+site
+
 # osx
 *.app
 *.mode1v3
@@ -6,6 +9,9 @@
 build
 xcuserdata
 DerivedData
+
+.sass-cache
+node_modules
 
 screen_shot
 screen_record
