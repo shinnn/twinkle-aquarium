@@ -1,6 +1,4 @@
 開発
-site
-.sass-cache
 
 screen_shot
 screen_record
@@ -13,22 +11,3 @@ screen_record
 build
 xcuserdata
 DerivedData
-
-# Node
-# https://github.com/github/gitignore/blob/master/Node.gitignore
-
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
-
-pids
-logs
-results
-
-npm-debug.log
-node_modules

@@ -1,11 +1,11 @@
 ﻿#include "app.h"
 
-int app::FISH_NUM[] = {600, 80, 5, 500};
-const int app::FPS = 60;
-const float app::MAX_FORCE = 20000.0f;
+int App::FISH_NUM[] = {600, 80, 5, 500};
+const int App::FPS = 60;
+const float App::MAX_FORCE = 20000.0f;
 
 //--------------------------------------------------------------
-void app::setup(){
+void App::setup(){
   
   soundInput.setup();
   
@@ -96,12 +96,12 @@ void app::setup(){
   attractionPointScale = settings.getValue("attractionPointScale", 1.0f);
 
   for(int i=0; i < 250; i++){
-    app::update();
+    App::update();
   }
 }
 
 //--------------------------------------------------------------
-void app::windowResized(int w, int h){
+void App::windowResized(int w, int h){
   winWidth = w;
   winHeight = h;
   
@@ -109,7 +109,7 @@ void app::windowResized(int w, int h){
 }
 
 //--------------------------------------------------------------
-void app::update(){
+void App::update(){
   
   // 5秒間経過した場合、マウスカーソルを非表示にする
   if(cursorHidingFrameCount == 5 * FPS){
@@ -190,7 +190,7 @@ void app::update(){
 }
 
 //--------------------------------------------------------------
-void app::draw(){
+void App::draw(){
   
   util.setTitle(devMode);
   
@@ -279,7 +279,7 @@ void app::draw(){
 }
 
 //--------------------------------------------------------------
-void app::keyPressed(int key){
+void App::keyPressed(int key){
   
   switch(key){
     // 'd'キー でデベロッパーモード
@@ -341,30 +341,30 @@ void app::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void app::keyReleased(int key){
+void App::keyReleased(int key){
 }
 
 //--------------------------------------------------------------
-void app::mouseMoved(int x, int y ){
+void App::mouseMoved(int x, int y ){
   // マウスカーソルが動いたとき表示させる
   cursorHidingFrameCount = 0;
   ofShowCursor();
 }
 
 //--------------------------------------------------------------
-void app::mousePressed(int x, int y, int button){
+void App::mousePressed(int x, int y, int button){
 }
 
 //--------------------------------------------------------------
-void app::mouseReleased(int x, int y, int button){
+void App::mouseReleased(int x, int y, int button){
 }
 
 //--------------------------------------------------------------
-void app::exit() {
+void App::exit() {
 }
 
 //------------------- Partial Functions ------------------------
-void app::setAllBounds(){
+void App::setAllBounds(){
   for(int i=0; i < shoals.size(); i++){
     shoals[i].flock.setBounds
     (
