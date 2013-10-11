@@ -1,4 +1,4 @@
-﻿#include "app.h"
+﻿#include "App.h"
 
 int App::FISH_NUM[] = {600, 80, 5, 500};
 const int App::FPS = 60;
