@@ -5,14 +5,15 @@ bool Background::isMonochrome = false;
 int Background::x = 0;
 int Background::y = 20;
 
-void Background::draw(int w, int h){
-  if(ofRandomf() > 0.5){
+void Background::draw(int w, int h)
+{
+  if (ofRandomf() > 0.5) {
     x += 12;
-  }else{
+  } else {
     x -= 12;
   }
   
-  if(x <= 0){
+  if (x <= 0) {
     x = 0;
   }
   

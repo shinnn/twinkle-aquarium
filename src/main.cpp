@@ -1,21 +1,17 @@
 #include "ofMain.h"
 #include "App.h"
-#include "ofAppGlutWindow.h"
 
 //==============================================================
 int main(){
-  ofAppGlutWindow window;
 	
   //------- HD mode
-  ofSetupOpenGL(&window, 1920, 1080, OF_WINDOW);
+  ofSetupOpenGL(1920, 1080, OF_WINDOW);
   //-------
   
   //------- fullscreen mode
-	//ofSetupOpenGL(&window, 1414, 896, OF_FULLSCREEN);
+	//ofSetupOpenGL(1920, 1080, OF_FULLSCREEN);
   //-------
 	
-  //ofSetupOpenGL(&window, 1414, 896, OF_WINDOW);
-  
   // 5 display mode
   //ofSetupOpenGL(&window, 8386, 896, OF_WINDOW);
   //-------

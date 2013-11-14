@@ -5,6 +5,7 @@ screen_record
 *.app
 *.mode1v3
 *.pbxuser
+*.xccheckout
 .DS_Store
 build
 xcuserdata

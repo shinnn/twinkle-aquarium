@@ -25,6 +25,7 @@ void App::setup(){
   ofSetVerticalSync(true);
   ofEnableSmoothing();
   ofEnableAlphaBlending();
+  glEnable(GL_DEPTH);
   
   paused = false;
   isFullscreen = false;
