@@ -49,7 +49,9 @@ public:
 };
 
 // 海中を漂う塵
-class Float: public Shoal{
+class Float: public Shoal {
+
 public:
   Float(ofImage ofI);
+
 };

@@ -5,7 +5,7 @@ const int App::FPS = 60;
 const float App::MAX_FORCE = 20000.0f;
 
 //--------------------------------------------------------------
-void App::setup(){
+void App::setup() {
   
   soundInput.setup();
   
@@ -71,11 +71,11 @@ void App::setup(){
   volume = 0;
   maxVolume = 1.0;
 
-  for(int i=0; i < FPS * 10; i++){
+  for (int i=0; i < FPS * 10; i++) {
     formarVolumes.push_back(0);
   }
   
-  for(int i=0; i < FPS * 0.05; i++){
+  for (int i=0; i < FPS * 0.05; i++) {
     currentVolumes.push_back(0);
   }
   
@@ -96,13 +96,13 @@ void App::setup(){
 
   attractionPointScale = settings.getValue("attractionPointScale", 1.0f);
 
-  for(int i=0; i < 250; i++){
+  for (int i=0; i < 250; i++) {
     App::update();
   }
 }
 
 //--------------------------------------------------------------
-void App::windowResized(int w, int h){
+void App::windowResized(int w, int h) {
   winWidth = w;
   winHeight = h;
   
@@ -110,13 +110,13 @@ void App::windowResized(int w, int h){
 }
 
 //--------------------------------------------------------------
-void App::update(){
+void App::update() {
   
   // 5秒間経過した場合、マウスカーソルを非表示にする
-  if(cursorHidingFrameCount == 5 * FPS){
+  if (cursorHidingFrameCount == 5 * FPS) {
     ofHideCursor();
     cursorHidingFrameCount = 0;
-  }else{
+  } else {
     cursorHidingFrameCount++;
   }
   
@@ -130,13 +130,13 @@ void App::update(){
   
   for(int i=0; i < shoals.size(); i++){
     // acceleration
-    if(currentVolumeAverage > formerVolumeAverage || currentVolumeAverage > 0.10f){
+    if (currentVolumeAverage > formerVolumeAverage || currentVolumeAverage > 0.10f) {
       force = MAX_FORCE * currentVolumeAverage;
       shoals[i].flock.setMaxSpeed(shoals[i].speed + Shoal::defaultEscapeSpeed * (force / MAX_FORCE));
-    }else{
-      if(force < 0.00010f){
+    } else {
+      if (force < 0.00010f) {
         force = 0;
-      }else{
+      } else {
         force = force * 0.950f;
       }
       // deceleration
@@ -168,7 +168,7 @@ void App::update(){
     );
     
     // Back to front
-    for (int j=2; j <= 3; j++){
+    for (int j=2; j <= 3; j++) {
       shoals[i].flock.changeAttractionPoint
       (
        j,
@@ -180,7 +180,7 @@ void App::update(){
        );
     }
     
-    if(paused){
+    if (paused) {
       return;
     }
     
@@ -191,7 +191,7 @@ void App::update(){
 }
 
 //--------------------------------------------------------------
-void App::draw(){
+void App::draw() {
   
   util.setTitle(devMode);
   
@@ -201,15 +201,15 @@ void App::draw(){
   // glRotatef(180.f, 0.f, 0.f, 1.f);
   // ofTranslate(-winWidth/2, -winHeight/2, 0);
 
-  if(showTrack){
+  if (showTrack) {
     ofSetColor(0, 0, 0, 98);
     ofRect(0, 0, winWidth, winHeight);
   }
 
   // Draw Background
-  if(Background::isMonochrome){
+  if (Background::isMonochrome) {
     ofBackground(bgColorR, bgColorG, bgColorB, 255);
-  }else{
+  } else {
     Background::draw(winWidth, winHeight);
   }
 
@@ -219,15 +219,15 @@ void App::draw(){
 
   #ifdef DEBUG
     // make AttractionPoint visible
-    if(flock.hasAttractionPoints()){
+    if (flock.hasAttractionPoints()) {
       ofSetColor(0, 255, 255, 255 * volume);
-      for(int i=0; i < flock.attractionPoints.size(); i++){
+      for (int i=0; i < flock.attractionPoints.size(); i++) {
         flock.attractionPoints[i]->draw();
       }
     }
   #endif
   
-  for(int i=0; i < shoals.size(); i++){
+  for (int i=0; i < shoals.size(); i++) {
     for (int j=0; j < FISH_NUM[i]; j++) {
       Boid3d * b = shoals[i].flock.get(j);
       
@@ -235,7 +235,7 @@ void App::draw(){
       glTranslatef(b->x, b->y, b->z);
 
       // turningZ が true のとき、常に正面を向いた状態で移動する
-      if(shoals[i].turningZ){
+      if (shoals[i].turningZ) {
         glRotatef(atan2( b->vz, b->vx ) * -RAD_TO_DEG, 0, 1, 0);
       }
       glRotatef(atan2( b->vy, sqrt( b->vx * b->vx + b->vz * b->vz ) )*RAD_TO_DEG, 0, 0, 1);
@@ -246,7 +246,7 @@ void App::draw(){
       glPopMatrix();
 
 
-      if(devMode){
+      if (devMode) {
         ofSetColor(255, 0, 0, 255);
         ofCircle(b->x, b->y, b->z, 1);
         
@@ -263,7 +263,7 @@ void App::draw(){
   
   ofEnableBlendMode(OF_BLENDMODE_ALPHA);
   
-  if(devMode){
+  if (devMode) {
     ofSetColor(255, 255, 255, 200);
     ofRect(0, 0, 400, winHeight);
     ofSetColor(0);
@@ -280,9 +280,9 @@ void App::draw(){
 }
 
 //--------------------------------------------------------------
-void App::keyPressed(int key){
+void App::keyPressed(int key) {
   
-  switch(key){
+  switch(key) {
     // 'd'キー でデベロッパーモード
     // 種々のパラメータを出力
     case 'd':
@@ -342,22 +342,22 @@ void App::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void App::keyReleased(int key){
+void App::keyReleased(int key) {
 }
 
 //--------------------------------------------------------------
-void App::mouseMoved(int x, int y ){
+void App::mouseMoved(int x, int y ) {
   // マウスカーソルが動いたとき表示させる
   cursorHidingFrameCount = 0;
   ofShowCursor();
 }
 
 //--------------------------------------------------------------
-void App::mousePressed(int x, int y, int button){
+void App::mousePressed(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void App::mouseReleased(int x, int y, int button){
+void App::mouseReleased(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
@@ -365,7 +365,7 @@ void App::exit() {
 }
 
 //------------------- Partial Functions ------------------------
-void App::setAllBounds(){
+void App::setAllBounds() {
   for(int i=0; i < shoals.size(); i++){
     shoals[i].flock.setBounds
     (

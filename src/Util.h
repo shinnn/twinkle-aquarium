@@ -3,8 +3,8 @@
 #include "ofMain.h"
 #include "ofxVideoRecorder.h"
 
-class Util
-{
+class Util {
+
 public:
   Util();
   

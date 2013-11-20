@@ -16,7 +16,7 @@ float Shoal::additional_vz = 0.850f;
 
 bool Shoal::isHidden = false;
 
-Shoal::Shoal(ofImage ofI){
+Shoal::Shoal(ofImage ofI) {
   img = ofI;
   imgWidth = img.getWidth();
   imgHeight = img.getHeight();
@@ -35,7 +35,7 @@ Shoal::Shoal(ofImage ofI){
   brightness = -1;
 }
 
-void Shoal::setupBoids(int num, int _w, int _h){
+void Shoal::setupBoids(int num, int _w, int _h) {
 
   flock.setup(num, _w * 0.50f, _h * 0.50f, 0, 1);
   flock.setBoundmode(0);
@@ -58,32 +58,32 @@ void Shoal::setupBoids(int num, int _w, int _h){
   flock.setAttractionDev(-1.0);
   
   // create attraction points
-  for (int i=0; i < 8; i++){
+  for (int i=0; i < 8; i++) {
     flock.addAttractionPoint(0, 0, 0, 0, 0);
   }
 }
 
-void Shoal::update(double force){
+void Shoal::update(double force) {
   flock.update();
   
   // Z軸の速度に斥力をすぐに反映させ、魚が突発的に逃げているように見せる
   for (int i=0; i < flock.size(); i++) {
     
-    if(flock.get(i)->vx > 0){
+    if (flock.get(i)->vx > 0) {
       flock.get(i)->vx += additional_vx * (force / maxForce);
-    }else{
+    } else {
       flock.get(i)->vx -= additional_vx * (force / maxForce);
     }
     
-    if(flock.get(i)->vy > 0){
+    if (flock.get(i)->vy > 0) {
       flock.get(i)->vy += additional_vy * (force / maxForce);
-    }else{
+    } else {
       flock.get(i)->vy -= additional_vy * (force / maxForce);
     }
     
-    if(flock.get(i)->vz > 0){
+    if (flock.get(i)->vz > 0) {
       flock.get(i)->vz += additional_vz * (force / maxForce);
-    }else{
+    } else {
       flock.get(i)->vz += additional_vz * 0.50f * (force / maxForce);
     }
     
@@ -117,9 +117,9 @@ void Shoal::update(double force){
   }
 }
 
-void Shoal::drawOnBoid(Boid3d * b){
+void Shoal::drawOnBoid(Boid3d * b) {
   
-  if(!isHidden){
+  if (!isHidden) {
     ofColor _color
     (
      170 + b->vx * 75,
@@ -131,10 +131,10 @@ void Shoal::drawOnBoid(Boid3d * b){
     //_color.setSaturation((abs(b->vx)+abs(b->vy)+abs(b->vz))*200*0.333);
     _color.setBrightness( ofMap((abs(b->vx)+abs(b->vy)+abs(b->vz)), 0, 2.8, 0, 255, true) );
     
-    if(saturation >= 0){
+    if (saturation >= 0) {
       _color.setSaturation(saturation);
     }
-    if(brightness >= 0){
+    if (brightness >= 0) {
       _color.setBrightness(brightness);
     }
     
@@ -155,7 +155,7 @@ void Shoal::drawOnBoid(Boid3d * b){
   return b;
 }
 
-Float::Float(ofImage ofI): Shoal(ofI){
+Float::Float(ofImage ofI): Shoal(ofI) {
   speed = 3.20f;
   align = 4.0f;
   

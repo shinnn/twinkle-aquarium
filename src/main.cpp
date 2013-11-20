@@ -2,7 +2,7 @@
 #include "App.h"
 
 //==============================================================
-int main(){
+int main() {
 	
   //------- HD mode
   ofSetupOpenGL(1920, 1080, OF_WINDOW);
