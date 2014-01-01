@@ -1,4 +1,4 @@
-# ひかりひらり水族館
+# Twinkle Aquarium
 
 ![screen shot](./frontispiece.jpg "スクリーンショット")
 
@@ -13,3 +13,6 @@
 ## ライセンス
 
 MITライセンス
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/shinnn/twinkle-aquarium/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![endorse](https://api.coderwall.com/shinnn/endorsecount.png)](https://coderwall.com/shinnn)
