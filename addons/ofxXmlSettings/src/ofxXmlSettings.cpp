@@ -674,4 +674,3 @@ void ofxXmlSettings::copyXmlToString(string & str)
 
 	str = printer.CStr();
 }
-

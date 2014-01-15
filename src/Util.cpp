@@ -9,7 +9,7 @@ Util::Util() {
 void Util::setTitle(bool devMode) {
   stringstream strstrm;
   
-  // アプリケーションを開いてからの経過時間の表示
+  // display elapsed time since application start
   if (devMode) {
     float seconds = ofGetElapsedTimef();
     string _h = ofToString(((int) seconds /60) % 60);
@@ -24,7 +24,7 @@ void Util::setTitle(bool devMode) {
     strstrm << "TIME: " << _h << ":" << _s << " ";
   }
   
-  // フレームレートの表示
+  // display current frame rate
   strstrm << "FPS: " << ofToString(ofGetFrameRate(), 4);
   
   ofSetWindowTitle(strstrm.str());
@@ -60,7 +60,7 @@ float Util::updateVectorAverage(vector<float> * l, float v) {
   return 1.0 / l->size() * _sum;
 }
 
-// 対象のフォルダが存在しない場合、そのフォルダを作成する
+// create a directory if it doesn't exist
 void Util::makeUnmadeDir(string dirpath) {
   if (! ofDirectory(dirpath).exists()) {
     ofDirectory::createDirectory(dirpath);

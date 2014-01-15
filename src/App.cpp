@@ -112,7 +112,7 @@ void App::windowResized(int w, int h) {
 //--------------------------------------------------------------
 void App::update() {
   
-  // 5秒間経過した場合、マウスカーソルを非表示にする
+  // hide mouse cursor after 5 seconds since the last operation
   if (cursorHidingFrameCount == 5 * FPS) {
     ofHideCursor();
     cursorHidingFrameCount = 0;
