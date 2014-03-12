@@ -48,10 +48,10 @@ public:
   void drawOnBoid(Boid3d * b);
 };
 
-// 海中を漂う塵
-class Float: public Shoal {
+// bubbles in the sea
+class Bubble: public Shoal {
 
 public:
-  Float(ofImage ofI);
+  Bubble(ofImage ofI);
 
 };

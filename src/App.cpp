@@ -49,7 +49,7 @@ void App::setup() {
   shoals.push_back(Shoal(ofImage("images/fish0.png")));
   shoals.push_back(Shoal(ofImage("images/fish1.png")));
   shoals.push_back(Shoal(ofImage("images/jellyfish.png")));
-  shoals.push_back(Float(ofImage("images/dust.png")));
+  shoals.push_back(Bubble(ofImage("images/dust.png")));
   
   // Initialize shoals
   for(int i=0; i < shoals.size(); i++){

@@ -155,7 +155,7 @@ void Shoal::drawOnBoid(Boid3d * b) {
   return b;
 }
 
-Float::Float(ofImage ofI): Shoal(ofI) {
+Bubble::Bubble(ofImage ofI): Shoal(ofI) {
   speed = 3.20f;
   align = 4.0f;
   
