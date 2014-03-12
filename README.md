@@ -12,9 +12,8 @@
 
 ## License
 
-Copyright (c) 2013 - 2014 [Shinnosuke Watanabe](https://github.com/shinnn) All rights reserved.
+Copyright (c) 2013 - 2014 [Shinnosuke Watanabe](https://github.com/shinnn)
 
 Unless otherwise stated, all source code in this repository is licensed under the [MIT license](http://opensource.org/licenses/mit-license.php).
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/shinnn/twinkle-aquarium/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![endorse](https://api.coderwall.com/shinnn/endorsecount.png)](https://coderwall.com/shinnn)
